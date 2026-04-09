@@ -1,0 +1,32 @@
+{
+  "name": "udise-etl-pipeline",
+  "version": "1.0.0",
+  "description": "Production-grade ETL pipeline for UDISE+ microdata — fetches district-level school reports, extracts CSVs from ZIPs, and consolidates into a master Excel workbook.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:api": "node src/server/index.js",
+    "db:setup": "node src/scripts/setupDatabase.js",
+    "start:dry": "DRY_RUN=true node index.js",
+    "start:large": "node --max-old-space-size=4096 --expose-gc index.js",
+    "start:large:dry": "DRY_RUN=true node --max-old-space-size=4096 --expose-gc index.js",
+    "lint": "eslint src/**/*.js index.js"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.10",
+    "axios": "^1.6.8",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "form-data": "^4.0.0",
+    "p-limit": "^3.1.0",
+    "pg": "^8.13.1",
+    "winston": "^3.13.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "UDISE ETL Team",
+  "license": "MIT"
+}
